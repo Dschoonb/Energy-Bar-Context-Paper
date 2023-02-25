@@ -11,7 +11,7 @@ str(App)
 
 #ANOVA
 options(contrasts = c("contr.sum", "contr.poly"))
-App.aov <-  aov(Appropriateness ~ (Product+Context+User+Time)^2, App)
+App.aov <-  aov(Appropriateness ~ (Product+Context+User)^2, App)
 summary(App.aov)
 
 write.csv(App.aov, "Energy_Bar_DA_3way_ANOVA_2way_Int.csv")
@@ -27,7 +27,7 @@ str(Like)
 
 #ANOVA
 options(contrasts = c("contr.sum", "contr.poly"))
-Like.aov <-  aov(Liking ~ (Product+Context+User+Time)^2, Like)
+Like.aov <-  aov(Liking ~ (Product+Context+User)^2, Like)
 summary(Like.aov)
 
 write.csv(Like.aov, "Energy_Bar_DA_3way_ANOVA_2way_Int.csv")
