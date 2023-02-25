@@ -31,3 +31,4 @@ Like.aov <-  aov(Liking ~ (Product+Context+User+Time)^2, Like)
 summary(Like.aov)
 
 write.csv(Like.aov, "Energy_Bar_DA_3way_ANOVA_2way_Int.csv")
+
