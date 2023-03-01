@@ -5,19 +5,49 @@ library(dplyr)
 library(ggsignif)
 
 #Appropriateness
-App <- read_excel("C:/Users/dlsch/OneDrive - University of California, Davis/Academics/Sensory/Projects/Energy Bar/Nonconscious Effects of Context on Energy Bar Perception/Data Analysis/Preliminary Data/Prelim Data.xlsx", sheet = "App")
+All <- read_excel("C:/Users/dlsch/OneDrive - University of California, Davis/Academics/Sensory/Projects/Energy Bar/Nonconscious Effects of Context on Energy Bar Perception/Data Analysis/Preliminary Data/Prelim Data.xlsx", sheet = "All")
 
-App$Context <- as.factor(App$Context)
+All$Context <- as.factor(All$Context)
+str(All)
 
-str(App)
-gg <- ggplot(App) + 
-  geom_boxplot(aes(x=Context,y=Appropriateness))
+#Context-App
+gg.App.con <- ggplot(All) + 
+  geom_boxplot(aes(x=Product,y=Appropriateness)) +
+  facet_grid(cols = vars(Context))
 
-gg
+gg.App.con
 
-##Liking
-Like <- read_excel("C:/Users/dlsch/OneDrive - University of California, Davis/Academics/Sensory/Projects/Energy Bar/Nonconscious Effects of Context on Energy Bar Perception/Data Analysis/Preliminary Data/Prelim Data.xlsx", sheet = "Like")
+#Freq-App
+gg.App.freq <- ggplot(All) + 
+  geom_boxplot(aes(x=`User Status`,y=Appropriateness)) +
+  facet_grid(cols = vars(Context))
 
-Like$Context <- as.factor(Like$Context)
+gg.App.freq
 
-str(Like)
+#Time-App
+gg.App.time <- ggplot(All) + 
+  geom_boxplot(aes(x=Time,y=Appropriateness)) +
+  facet_grid(cols = vars(Context))
+
+gg.App.time
+
+#Context-Liking
+gg.Like.con <- ggplot(All) + 
+  geom_boxplot(aes(x=Product,y=Liking)) +
+  facet_grid(cols = vars(Context))
+
+gg.Like.con
+
+#Freq-Like
+gg.Like.freq <- ggplot(All) + 
+  geom_boxplot(aes(x=`User Status`,y=Liking)) +
+  facet_grid(cols = vars(Context))
+
+gg.Like.freq
+
+#Time-Like
+gg.Like <- ggplot(All) + 
+  geom_boxplot(aes(x=Time,y=Liking)) +
+  facet_grid(cols = vars(Context))
+
+gg.Like.time
